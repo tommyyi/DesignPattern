@@ -10,11 +10,11 @@ public class Originator {
 
 	}
 
-	public MementoIF createMemento() {
+	public IMementoIF createMemento() {
 		return new Memento(state);
 	}
 
-	public void restoreMemento(MementoIF memento) {
+	public void restoreMemento(IMementoIF memento) {
 		state = ((Memento) memento).getState();
 	}
 
@@ -36,7 +36,8 @@ public class Originator {
 
 	}
 
-	private class Memento implements MementoIF {
+	private class Memento implements IMementoIF
+    {
 
 		private HashMap<String, String> state;
 

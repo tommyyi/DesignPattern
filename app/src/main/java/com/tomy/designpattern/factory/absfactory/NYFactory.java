@@ -5,7 +5,8 @@ import com.tomy.designpattern.factory.pizza.NYCheesePizza;
 import com.tomy.designpattern.factory.pizza.NYPepperPizza;
 import com.tomy.designpattern.factory.pizza.Pizza;
 
-public class NYFactory implements AbsFactory {
+public class NYFactory implements IFactory
+{
 
 	
 	@Override

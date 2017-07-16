@@ -5,7 +5,8 @@ import com.tomy.designpattern.factory.pizza.LDCheesePizza;
 import com.tomy.designpattern.factory.pizza.LDPepperPizza;
 import com.tomy.designpattern.factory.pizza.Pizza;
 
-public class LDFactory implements AbsFactory {
+public class LDFactory implements IFactory
+{
 
 	@Override
 	public Pizza CreatePizza(String ordertype) {

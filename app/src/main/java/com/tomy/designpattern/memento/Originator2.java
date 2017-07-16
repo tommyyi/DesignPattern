@@ -9,11 +9,11 @@ public class Originator2 {
 		state = new ArrayList<String>();
 	}
 
-	public MementoIF createMemento() {
+	public IMementoIF createMemento() {
 		return new Memento(state);
 	}
 
-	public void restoreMemento(MementoIF memento) {
+	public void restoreMemento(IMementoIF memento) {
 		state = ((Memento) memento).getState();
 	}
 
@@ -37,7 +37,8 @@ public class Originator2 {
 		System.out.println("now state:" + state.toString());
 	}
 
-	private class Memento implements MementoIF {
+	private class Memento implements IMementoIF
+    {
 
 		private ArrayList<String> state;
 

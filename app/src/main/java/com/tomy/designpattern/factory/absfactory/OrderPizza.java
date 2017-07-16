@@ -8,14 +8,14 @@ import java.io.InputStreamReader;
 
 
 public class OrderPizza {
-	AbsFactory mFactory;
+	IFactory mFactory;
 
-	public OrderPizza(AbsFactory mFactory) {
+	public OrderPizza(IFactory mFactory) {
 
 		setFactory(mFactory);
 	}
 
-	public void setFactory(AbsFactory mFactory) {
+	public void setFactory(IFactory mFactory) {
 		Pizza pizza = null;
 		String ordertype;
 
