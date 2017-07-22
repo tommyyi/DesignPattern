@@ -21,7 +21,7 @@ public class HasCoin implements IState
 	public void returnCoin() {
 		// TODO Auto-generated method stub
 		System.out.println("coin return!");
-		mCandyMachine.setIState(mCandyMachine.mOnReadyIState);
+		mCandyMachine.setIState(new OnReadyState(mCandyMachine));
 	}
 
 	@Override
@@ -32,11 +32,11 @@ public class HasCoin implements IState
 		int winner=ranwinner.nextInt(10);
 		if(winner==0)
 		{
-			mCandyMachine.setIState(mCandyMachine.mWinnerIState);
+			mCandyMachine.setIState(new WinnerState(mCandyMachine));
 
 		}else
 		{
-			mCandyMachine.setIState(mCandyMachine.mSoldIState);
+			mCandyMachine.setIState(new SoldState(mCandyMachine));
 
 		}
 		

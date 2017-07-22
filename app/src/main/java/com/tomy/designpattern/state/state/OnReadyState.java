@@ -13,7 +13,7 @@ public class OnReadyState implements IState
 		// TODO Auto-generated method stub
 		System.out
 		.println("you have inserted a coin,next,please turn crank!");
-		mCandyMachine.setIState(mCandyMachine.mHasCoin);
+		mCandyMachine.setIState(new HasCoin(mCandyMachine));
 	}
 
 	@Override

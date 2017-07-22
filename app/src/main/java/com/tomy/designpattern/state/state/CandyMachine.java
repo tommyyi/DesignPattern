@@ -2,25 +2,15 @@ package com.tomy.designpattern.state.state;
 
 public class CandyMachine {
 
-	IState mSoldOutIState;
-	IState mOnReadyIState;
-	IState mHasCoin;
-	IState mSoldIState;
-	IState mWinnerIState;
 	private IState mIState;
 	private int count = 0;
 
 	public CandyMachine(int count) {
 		this.count = count;
-		mSoldOutIState = new SoldOutState(this);
-		mOnReadyIState = new OnReadyState(this);
-		mHasCoin = new HasCoin(this);
-		mSoldIState = new SoldState(this);
-		mWinnerIState = new WinnerState(this);
 		if (count > 0) {
-			mIState = mOnReadyIState;
+			mIState = new OnReadyState(this);
 		} else {
-			mIState = mSoldOutIState;
+			mIState = new SoldOutState(this);
 		}
 	}
 

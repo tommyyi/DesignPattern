@@ -36,10 +36,10 @@ public class SoldState implements IState
 		
 		mCandyMachine.releaseCandy();
 		if (mCandyMachine.getCount() > 0) {
-			mCandyMachine.setIState(mCandyMachine.mOnReadyIState);
+			mCandyMachine.setIState(new OnReadyState(mCandyMachine));
 		} else {
 			System.out.println("Oo,out of candies");
-			mCandyMachine.setIState(mCandyMachine.mSoldOutIState);
+			mCandyMachine.setIState(new SoldOutState(mCandyMachine));
 		}
 
 	
