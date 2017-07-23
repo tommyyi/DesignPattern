@@ -2,21 +2,29 @@ package com.tomy.designpattern.memento;
 
 import java.util.HashMap;
 
-public class MementoCaretaker {
-	private HashMap<String, IMementoIF> mementomap;
+public class MementoCaretaker
+{
+    private HashMap<String, IMementoIF> mementoMap;
 
-	public MementoCaretaker() {
-		mementomap = new HashMap<String, IMementoIF>();
-	}
+    public MementoCaretaker()
+    {
+        mementoMap = new HashMap<>();
+    }
 
-	public IMementoIF retrieveMemento(String name) {
-		return mementomap.get(name);
-	}
+    /**
+     * @param name 获取备忘录
+     * @return
+     */
+    public IMementoIF retrieveMemento(String name)
+    {
+        return mementoMap.get(name);
+    }
 
-	/**
-	 * 备忘录赋值方法
-	 */
-	public void saveMemento(String name, IMementoIF memento) {
-		this.mementomap.put(name, memento);
-	}
+    /**
+     * 保存备忘录
+     */
+    public void saveMemento(String name, IMementoIF memento)
+    {
+        this.mementoMap.put(name, memento);
+    }
 }

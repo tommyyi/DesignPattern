@@ -1,21 +1,21 @@
 package com.tomy.designpattern.command.device;
 
-public class Light {
+public class Light
+{
+    String loc = "";
 
-	String loc = "";
+    public Light(String loc)
+    {
+        this.loc = loc;
+    }
 
-	public Light(String loc) {
-		this.loc = loc;
-	}
+    public void On()
+    {
+        System.out.println(loc + " On");
+    }
 
-	public void On() {
-
-		System.out.println(loc + " On");
-	}
-
-	public void Off() {
-
-		System.out.println(loc + " Off");
-	}
-
+    public void Off()
+    {
+        System.out.println(loc + " Off");
+    }
 }

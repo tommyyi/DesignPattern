@@ -2,10 +2,11 @@ package com.tomy.designpattern.memento;
 
 import java.util.HashMap;
 
-public class Originator {
+public class Originator1
+{
 	private HashMap<String, String> state;
 
-	public Originator() {
+	public Originator1() {
 		state = new HashMap();
 
 	}
