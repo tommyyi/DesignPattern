@@ -1,28 +1,39 @@
 package com.tomy.designpattern.decorator.coffeebar.decorator;
 
-
 import com.tomy.designpattern.decorator.coffeebar.Drink;
 
-public  class Decorator extends Drink
+/**
+ * 在被装饰者的特性上，增加一些特性
+ */
+public class Decorator extends Drink
 {
-	private Drink Obj;
+    /*被装饰者*/
+    private Drink mDrink;
 
-	public Decorator(Drink Obj){
-		this.Obj=Obj;
-	};
-	
-	
-	@Override
-	public float cost() {
-		// TODO Auto-generated method stub
-		
-		return super.getPrice()+Obj.cost();
-	}
+    /**
+     * @param drink 被装饰者
+     */
+    public Decorator(Drink drink)
+    {
+        this.mDrink = drink;
+    }
 
-	@Override
-	public String getDescription()
-	{
-		return super.description+"-"+super.getPrice()+"&&"+Obj.getDescription();
-	}
-	
-	}
+    /*被装饰者的价格+自身的价格
+     * @return
+     */
+    @Override
+    public float cost()
+    {
+        return mDrink.cost() + super.getPrice();
+    }
+
+    /**
+     * 被装饰者的描述+自身的描述+自身的价格
+     * @return
+     */
+    @Override
+    public String getDescription()
+    {
+        return mDrink.getDescription() + "&&" + super.description + "-" + super.getPrice();
+    }
+}

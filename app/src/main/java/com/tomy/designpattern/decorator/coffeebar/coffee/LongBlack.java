@@ -1,12 +1,19 @@
 package com.tomy.designpattern.decorator.coffeebar.coffee;
 
-public class LongBlack extends Coffee{
-	
-	public LongBlack()
-	{
-		super.setDescription("LongBlack");
-		super.setPrice(6.0f);
-	}
+import com.tomy.designpattern.decorator.coffeebar.Drink;
 
+public class LongBlack extends Drink
+{
+    public LongBlack()
+    {
+        super.setDescription("黑咖啡");
+        super.setPrice(6.0f);
+    }
+
+    @Override
+    public float cost()
+    {
+        return super.getPrice();
+    }
 }
 
