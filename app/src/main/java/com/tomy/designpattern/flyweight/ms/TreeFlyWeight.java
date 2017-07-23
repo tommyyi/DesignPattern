@@ -7,7 +7,7 @@ public class TreeFlyWeight {
 	}
 
 	public void display(int xCoord, int yCoord, int age) {
-		// System.out.print("x");
+		// System.out.display("x");
 	}
 
 }

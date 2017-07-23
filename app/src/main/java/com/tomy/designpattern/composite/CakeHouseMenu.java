@@ -1,36 +1,55 @@
 package com.tomy.designpattern.composite;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
-public class CakeHouseMenu extends MenuComponent {
-	private ArrayList<MenuComponent> menuItems;
+public class CakeHouseMenu extends AbsMenuItem
+{
+    public ArrayList<AbsMenuItem> getMenuItemList()
+    {
+        return mMenuItemList;
+    }
 
-	public CakeHouseMenu() {
-		menuItems = new ArrayList<MenuComponent>();
+    private ArrayList<AbsMenuItem> mMenuItemList;
 
-		addItem("KFC Cake Breakfast", "boiled eggs&toast&cabbage", true, 3.99f);
-		addItem("MDL Cake Breakfast", "fried eggs&toast", false, 3.59f);
-		addItem("Stawberry Cake", "fresh stawberry", true, 3.29f);
-		addItem("Regular Cake Breakfast", "toast&sausage", true, 2.59f);
-	}
+    public CakeHouseMenu()
+    {
+        super();
+        mMenuItemList = new ArrayList<>();
 
-	private void addItem(String name, String description, boolean vegetable,
-			float price) {
-		MenuItem menuItem = new MenuItem(name, description, vegetable, price);
-		menuItems.add(menuItem);
-	}
+        /*添加菜单项*/
+        addMenuItem("KFC Cake Breakfast", "boiled eggs&toast&cabbage", true, 3.99f);
+        addMenuItem("MDL Cake Breakfast", "fried eggs&toast", false, 3.59f);
+        addMenuItem("Stawberry Cake", "fresh stawberry", true, 3.29f);
+        addMenuItem("Regular Cake Breakfast", "toast&sausage", true, 2.59f);
+    }
 
-	public Iterator getIterator() {
-		return new ComposeIterator(menuItems.iterator());
-	}
+    /**添加菜单项
+     * @param name
+     * @param description
+     * @param isVegetable
+     * @param price
+     */
+    private void addMenuItem(String name, String description, boolean isVegetable, float price)
+    {
+        MenuItem menuItem = new MenuItem(name, description, isVegetable, price);
+        mMenuItemList.add(menuItem);
+    }
 
-	@Override
-	public void print() {
-		// TODO Auto-generated method stub
-		System.out.println("****This is CakeHouseMenu****");
-	};
+    @Override
+    public String getName()
+    {
+        return "CakeHouseMenu";
+    }
 
-	// 其他功能代码
+    @Override
+    public String getDescription()
+    {
+        return "here, we provide various cake";
+    }
 
+    @Override
+    public float getPrice()
+    {
+        return 0;
+    }
 }

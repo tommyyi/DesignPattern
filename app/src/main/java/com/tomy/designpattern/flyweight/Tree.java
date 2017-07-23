@@ -10,6 +10,6 @@ public class Tree {
 	}
 
 	public void display() {
-		// System.out.print("x");
+		// System.out.display("x");
 	}
 }
