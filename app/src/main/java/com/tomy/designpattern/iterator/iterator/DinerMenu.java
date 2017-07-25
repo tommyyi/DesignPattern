@@ -52,7 +52,7 @@ public class DinerMenu {
 		}
 
 		@Override
-		public Object next() {
+		public MenuItem next() {
 			// TODO Auto-generated method stub
 			MenuItem menuItem = menuItems[position];
 			position++;

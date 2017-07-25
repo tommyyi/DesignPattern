@@ -1,10 +1,9 @@
 package com.tomy.designpattern.iterator.iterator;
 
+import com.tomy.designpattern.iterator.MenuItem;
+
 public interface IIterator
 {
-	
-	public boolean hasNext();
-	public Object next();
-	
-
+	boolean hasNext();
+	MenuItem next();
 }

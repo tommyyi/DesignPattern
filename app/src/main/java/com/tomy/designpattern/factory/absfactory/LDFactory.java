@@ -7,18 +7,19 @@ import com.tomy.designpattern.factory.pizza.Pizza;
 
 public class LDFactory implements IFactory
 {
+    @Override
+    public Pizza CreatePizza(String type)
+    {
+        Pizza pizza = null;
 
-	@Override
-	public Pizza CreatePizza(String ordertype) {
-		Pizza pizza = null;
-
-		if (ordertype.equals("cheese")) {
-			pizza = new LDCheesePizza();
-		} else if (ordertype.equals("pepper")) {
-			pizza = new LDPepperPizza();
-		}
-		return pizza;
-
-	}
-
+        if (type.equals("cheese"))
+        {
+            pizza = new LDCheesePizza();
+        }
+        else if (type.equals("pepper"))
+        {
+            pizza = new LDPepperPizza();
+        }
+        return pizza;
+    }
 }

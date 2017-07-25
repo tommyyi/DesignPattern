@@ -10,7 +10,7 @@ public class CakeHouseMenu {
 	
 	
 	public CakeHouseMenu() {
-		menuItems = new ArrayList<MenuItem>();
+		menuItems = new ArrayList<>();
 		
 		addItem("KFC Cake Breakfast","boiled eggs&toast&cabbage",true,3.99f);
 		addItem("MDL Cake Breakfast","fried eggs&toast",false,3.59f);
@@ -51,7 +51,7 @@ public class CakeHouseMenu {
 		}
 
 		@Override
-		public Object next() {
+		public MenuItem next() {
 			// TODO Auto-generated method stub
 			MenuItem menuItem =menuItems.get(position);
 			position++;

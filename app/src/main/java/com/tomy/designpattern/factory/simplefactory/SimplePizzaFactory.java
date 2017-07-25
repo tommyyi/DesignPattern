@@ -6,20 +6,24 @@ import com.tomy.designpattern.factory.pizza.GreekPizza;
 import com.tomy.designpattern.factory.pizza.PepperPizza;
 import com.tomy.designpattern.factory.pizza.Pizza;
 
-public class SimplePizzaFactory {
+public class SimplePizzaFactory
+{
+    public Pizza CreatePizza(String type)
+    {
+        Pizza pizza = null;
 
-	public Pizza CreatePizza(String ordertype) {
-		Pizza pizza = null;
-
-		if (ordertype.equals("cheese")) {
-			pizza = new CheesePizza();
-		} else if (ordertype.equals("greek")) {
-			pizza = new GreekPizza();
-		} else if (ordertype.equals("pepper")) {
-			pizza = new PepperPizza();
-		}
-		return pizza;
-
-	}
-
+        if (type.equals("cheese"))
+        {
+            pizza = new CheesePizza();
+        }
+        else if (type.equals("greek"))
+        {
+            pizza = new GreekPizza();
+        }
+        else if (type.equals("pepper"))
+        {
+            pizza = new PepperPizza();
+        }
+        return pizza;
+    }
 }

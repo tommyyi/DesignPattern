@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 
 public class Waitress {
-	private ArrayList<IIterator> mIIterators =new ArrayList<IIterator>();
+	private ArrayList<IIterator> mIIterators = new ArrayList<>();
 
 
 	public Waitress() {
@@ -25,7 +25,7 @@ public class Waitress {
 			
 			while(IIterator.hasNext())
 			{
-				menuItem=(MenuItem)	IIterator.next();
+				menuItem= IIterator.next();
 				System.out.println(menuItem.getName() + "***"
 						+menuItem.getPrice()+"***"+ menuItem.getDescription());
 

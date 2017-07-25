@@ -7,46 +7,49 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 
-public class OrderPizza {
-	IFactory mFactory;
+public class OrderPizza
+{
+    private IFactory mIFactory;
 
-	public OrderPizza(IFactory mFactory) {
+    public OrderPizza(IFactory iFactory)
+    {
+        setIFactory(iFactory);
+    }
 
-		setFactory(mFactory);
-	}
+    public void setIFactory(IFactory mFactory)
+    {
+        Pizza pizza;
+        String type;
 
-	public void setFactory(IFactory mFactory) {
-		Pizza pizza = null;
-		String ordertype;
+        this.mIFactory = mFactory;
+        while (true)
+        {
+            type = getType();
+            pizza = mFactory.CreatePizza(type);
+            if (pizza != null)
+            {
+                pizza.prepare();
+                pizza.bake();
+                pizza.cut();
+                pizza.box();
+            }
+        }
+    }
 
-		this.mFactory = mFactory;
+    private String getType()
+    {
+        try
+        {
+            BufferedReader strin = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("input pizza type:");
+            String str = strin.readLine();
 
-		do {
-			ordertype = gettype();
-			pizza = mFactory.CreatePizza(ordertype);
-			if (pizza != null) {
-				pizza.prepare();
-				pizza.bake();
-				pizza.cut();
-				pizza.box();
-			}
-
-		} while (true);
-
-	}
-
-	private String gettype() {
-		try {
-			BufferedReader strin = new BufferedReader(new InputStreamReader(
-					System.in));
-			System.out.println("input pizza type:");
-			String str = strin.readLine();
-
-			return str;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return "";
-		}
-	}
-
+            return str;
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            return "";
+        }
+    }
 }

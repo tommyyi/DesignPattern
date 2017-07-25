@@ -7,19 +7,19 @@ import com.tomy.designpattern.factory.pizza.Pizza;
 
 public class NYFactory implements IFactory
 {
+    @Override
+    public Pizza CreatePizza(String type)
+    {
+        Pizza pizza = null;
 
-	
-	@Override
-	public Pizza CreatePizza(String ordertype) {
-		Pizza pizza = null;
-
-		if (ordertype.equals("cheese")) {
-			pizza = new NYCheesePizza();
-		} else if (ordertype.equals("pepper")) {
-			pizza = new NYPepperPizza();
-		}
-		return pizza;
-
-	}
-
+        if (type.equals("cheese"))
+        {
+            pizza = new NYCheesePizza();
+        }
+        else if (type.equals("pepper"))
+        {
+            pizza = new NYPepperPizza();
+        }
+        return pizza;
+    }
 }

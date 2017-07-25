@@ -7,37 +7,40 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 
-public abstract class OrderPizza {
+public abstract class OrderPizza
+{
+    public OrderPizza()
+    {
+        Pizza pizza = null;
+        String type;
 
-	public OrderPizza() {
-		Pizza pizza = null;
-		String ordertype;
+        while (true)
+        {
+            type = gettype();
+            pizza = createPizza(type);
 
-		do {
-			ordertype = gettype();
-			pizza = createPizza(ordertype);
+            pizza.prepare();
+            pizza.bake();
+            pizza.cut();
+            pizza.box();
+        }
+    }
 
-			pizza.prepare();
-			pizza.bake();
-			pizza.cut();
-			pizza.box();
-		} while (true);
-	}
+    abstract Pizza createPizza(String ordertype);
 
-	abstract Pizza createPizza(String ordertype);
+    private String gettype()
+    {
+        try
+        {
+            BufferedReader strin = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("input pizza type:");
 
-	private String gettype() {
-		try {
-			BufferedReader strin = new BufferedReader(new InputStreamReader(
-					System.in));
-			System.out.println("input pizza type:");
-			String str = strin.readLine();
-
-			return str;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return "";
-		}
-	}
-
+            return strin.readLine();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            return "";
+        }
+    }
 }

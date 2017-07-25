@@ -1,13 +1,15 @@
 package com.tomy.designpattern.factory.pizza;
 
-public class LDPepperPizza extends Pizza {
+public class LDPepperPizza extends Pizza
+{
 
-	@Override
-	public void prepare() {
-		// TODO Auto-generated method stub
-		super.setname("LDPepperPizza");
-		
-		System.out.println(name+" preparing;");
-	}
+    @Override
+    public void prepare()
+    {
+        // TODO Auto-generated method stub
+        super.setname("LDPepperPizza");
+
+        System.out.println(name + " preparing;");
+    }
 
 }

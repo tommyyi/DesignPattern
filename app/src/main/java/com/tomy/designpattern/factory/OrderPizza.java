@@ -11,45 +11,59 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 
-public class OrderPizza {
+public class OrderPizza
+{
 
-	public OrderPizza() {
-		Pizza pizza = null;
-		String ordertype;
+    public OrderPizza()
+    {
+        Pizza pizza = null;
+        String type;
 
-		do {
-			ordertype = gettype();
+        label:
+        do
+        {
+            type = gettype();
 
-			if (ordertype.equals("cheese")) {
-				pizza = new CheesePizza();
-			} else if (ordertype.equals("greek")) {
-				pizza = new GreekPizza();
-			} else if (ordertype.equals("pepper")) {
-				pizza = new PepperPizza();
-			} else if (ordertype.equals("chinese")) {
-				pizza = new ChinesePizza();
-			} else {
-				break;
-			}
-			pizza.prepare();
-			pizza.bake();
-			pizza.cut();
-			pizza.box();
-		} while (true);
-	}
+            switch (type)
+            {
+                case "cheese":
+                    pizza = new CheesePizza();
+                    break;
+                case "greek":
+                    pizza = new GreekPizza();
+                    break;
+                case "pepper":
+                    pizza = new PepperPizza();
+                    break;
+                case "chinese":
+                    pizza = new ChinesePizza();
+                    break;
+                default:
+                    break label;
+            }
+            pizza.prepare();
+            pizza.bake();
+            pizza.cut();
+            pizza.box();
+        }
+        while (true);
+    }
 
-	private String gettype() {
-		try {
-			BufferedReader strin = new BufferedReader(new InputStreamReader(
-					System.in));
-			System.out.println("input pizza type:");
-			String str = strin.readLine();
+    private String gettype()
+    {
+        try
+        {
+            BufferedReader strin = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("input pizza type:");
+            String str = strin.readLine();
 
-			return str;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return "";
-		}
-	}
+            return str;
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            return "";
+        }
+    }
 
 }

@@ -5,19 +5,21 @@ import com.tomy.designpattern.factory.pizza.LDCheesePizza;
 import com.tomy.designpattern.factory.pizza.LDPepperPizza;
 import com.tomy.designpattern.factory.pizza.Pizza;
 
-public class LDOrderPizza extends OrderPizza {
+public class LDOrderPizza extends OrderPizza
+{
+    @Override
+    Pizza createPizza(String type)
+    {
+        Pizza pizza = null;
 
-	@Override
-	Pizza createPizza(String ordertype) {
-		Pizza pizza = null;
-
-		if (ordertype.equals("cheese")) {
-			pizza = new LDCheesePizza();
-		} else if (ordertype.equals("pepper")) {
-			pizza = new LDPepperPizza();
-		}
-		return pizza;
-
-	}
-
+        if (type.equals("cheese"))
+        {
+            pizza = new LDCheesePizza();
+        }
+        else if (type.equals("pepper"))
+        {
+            pizza = new LDPepperPizza();
+        }
+        return pizza;
+    }
 }
