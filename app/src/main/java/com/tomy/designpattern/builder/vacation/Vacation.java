@@ -6,83 +6,102 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Vacation {
-	private ArrayList<VacationDay> mVacationDayLst;
-	private Date mStDate;
-	private int mDays = 0;
-	private VacationDay mVacationDay;
+public class Vacation
+{
+    private ArrayList<VacationDay> mVacationDayLst;
+    private Date mStDate;
+    private int mDays = 0;
+    private VacationDay mVacationDay;
 
-	public Vacation(String std) {
-		mVacationDayLst = new ArrayList<VacationDay>();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		try {
-			mStDate = sdf.parse(std);
-			mVacationDay = new VacationDay(mStDate);
-			mVacationDayLst.add(mVacationDay);
-			mDays++;
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+    public Vacation(String std)
+    {
+        mVacationDayLst = new ArrayList<VacationDay>();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try
+        {
+            mStDate = sdf.parse(std);
+            mVacationDay = new VacationDay(mStDate);
+            mVacationDayLst.add(mVacationDay);
+            mDays++;
+        }
+        catch (ParseException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
-	public void setStDate(String std) {
+    public Date getStDate()
+    {
 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		try {
-			mStDate = sdf.parse(std);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        return mStDate;
+    }
 
-	}
+    public void setStDate(String std)
+    {
 
-	public Date getStDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try
+        {
+            mStDate = sdf.parse(std);
+        }
+        catch (ParseException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
-		return mStDate;
-	}
+    }
 
-	public void addDay() {
+    public void addDay()
+    {
 
-		mVacationDay = new VacationDay(nextDate(mDays));
-		mVacationDayLst.add(mVacationDay);
-		mDays++;
-	}
+        mVacationDay = new VacationDay(nextDate(mDays));
+        mVacationDayLst.add(mVacationDay);
+        mDays++;
+    }
 
-	public boolean setVacationDay(int i) {
-		if ((i > 0) && (i < mVacationDayLst.size())) {
-			mVacationDay = mVacationDayLst.get(i);
-			return true;
-		}
-		mVacationDay = null;
-		return false;
-	}
+    public boolean setVacationDay(int i)
+    {
+        if ((i > 0) && (i < mVacationDayLst.size()))
+        {
+            mVacationDay = mVacationDayLst.get(i);
+            return true;
+        }
+        mVacationDay = null;
+        return false;
+    }
 
-	public void setHotel(String mHotels) {
-		mVacationDay.setHotel(mHotels);
-	}
+    public void setHotel(String mHotels)
+    {
+        mVacationDay.setHotel(mHotels);
+    }
 
-	public void addTicket(String ticket) {
-		mVacationDay.addTicket(ticket);
-	}
+    public void addTicket(String ticket)
+    {
+        mVacationDay.addTicket(ticket);
+    }
 
-	public void addEvent(String event) {
-		mVacationDay.addEvent(event);
-	}
+    public void addEvent(String event)
+    {
+        mVacationDay.addEvent(event);
+    }
 
-	public void showInfo() {
-		for (int i = 0, len = mVacationDayLst.size(); i < len; i++) {
-			System.out.println("** " + (i + 1) + " day**");
-			System.out.println(mVacationDayLst.get(i).showInfo());
+    public void showInfo()
+    {
+        for (int i = 0, len = mVacationDayLst.size(); i < len; i++)
+        {
+            System.out.println("** " + (i + 1) + " day**");
+            System.out.println(mVacationDayLst.get(i).showInfo());
 
-		}
-	}
+        }
+    }
 
-	private Date nextDate(int n) {
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(mStDate);
-		cal.add(Calendar.DATE, n);
-		return cal.getTime();
-	}
+    private Date nextDate(int n)
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(mStDate);
+        cal.add(Calendar.DATE, n);
+        return cal.getTime();
+    }
 }
