@@ -1,32 +1,41 @@
 package com.tomy.designpattern.proxy;
 
-import com.tomy.designpattern.proxy.candymachine.CandyMachine;
+import com.tomy.designpattern.proxy.candymachinermi.ICandyMachineRemote;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public class Monitor {
-	private ArrayList<CandyMachine> candyMachinelst;
+public class Monitor
+{
 
-	public Monitor() {
-		candyMachinelst = new ArrayList<CandyMachine>();
-	}
+    private ArrayList<ICandyMachineRemote> candyMachinelst;
 
-	public void addMachine(CandyMachine mCandyMachine) {
-		candyMachinelst.add(mCandyMachine);
-	}
+    public Monitor()
+    {
+        candyMachinelst = new ArrayList<>();
+    }
 
-	public void report() {
-		CandyMachine mCandyMachine;
-		for (int i = 0, len = candyMachinelst.size(); i < len; i++) {
-			mCandyMachine = candyMachinelst.get(i);
-			System.out.println("Machine Loc:" + mCandyMachine.getLocation());
-			System.out.println("Machine Candy count:"
-					+ mCandyMachine.getCount());
-			System.out.println("Machine IState:"
-					+ mCandyMachine.getstate().getstatename());
+    public void addMachine(ICandyMachineRemote mCandyMachine)
+    {
+        candyMachinelst.add(mCandyMachine);
+    }
 
-		}
-
-	}
-
+    public void report()
+    {
+        ICandyMachineRemote mCandyMachine;
+        for (int i = 0, len = candyMachinelst.size(); i < len; i++)
+        {
+            mCandyMachine = candyMachinelst.get(i);
+            try
+            {
+                System.out.println("Machine Loc:" + mCandyMachine.getLocation());
+                System.out.println("Machine Candy count:" + mCandyMachine.getCount());
+                System.out.println("Machine IState:" + mCandyMachine.getCurrentState().getCurrentStateName());
+            }
+            catch (RemoteException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
 }

@@ -1,25 +1,32 @@
 package com.tomy.designpattern.proxy;
 
-import com.tomy.designpattern.proxy.candymachine.CandyMachine;
+import com.tomy.designpattern.proxy.candymachinermi.ICandyMachineRemote;
 
-import java.rmi.RemoteException;
+import java.rmi.Naming;
 
 
-public class MainTest {
-	public static void main(String[] args) throws RemoteException {
-		Monitor mMonitor=new Monitor();
-		CandyMachine mCandyMachine = new CandyMachine("NY",6);
-		mMonitor.addMachine(mCandyMachine);
-		
-		mCandyMachine = new CandyMachine("TK",4);
-		mCandyMachine.insertCoin();
-		mMonitor.addMachine(mCandyMachine);
-		
-		mCandyMachine = new CandyMachine("Bj",14);
-		mCandyMachine.insertCoin();	
-		mCandyMachine.turnCrank();
-		mMonitor.addMachine(mCandyMachine);
+public class MainTest
+{
+    public static void main(String[] args)
+    {
+        Monitor mMonitor = new Monitor();
 
-		mMonitor.report();
-	}
+        try
+        {
+            /*获取远端代理*/
+            ICandyMachineRemote mCandyMachine = (ICandyMachineRemote) Naming.lookup("rmi://127.0.0.1:6602/test1");
+            mMonitor.addMachine(mCandyMachine);
+
+            /*获取远端代理*/
+            mCandyMachine = (ICandyMachineRemote) Naming.lookup("rmi://127.0.0.1:6602/test2");
+            mMonitor.addMachine(mCandyMachine);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        /*操作远端代理*/
+        mMonitor.report();
+    }
 }

@@ -1,15 +1,18 @@
 package com.tomy.designpattern.flyweight;
 
-public class Tree {
-	private int xCoord, yCoord, age;
+public class Tree
+{
+    private int xCoord, yCoord, age;
 
-	public Tree(int xCoord, int yCoord, int age) {
-		this.xCoord = xCoord;
-		this.yCoord = yCoord;
-		this.age = age;
-	}
+    public Tree(int xCoord, int yCoord, int age)
+    {
+        this.xCoord = xCoord;
+        this.yCoord = yCoord;
+        this.age = age;
+    }
 
-	public void display() {
-		// System.out.display("x");
-	}
+    public void display()
+    {
+        // System.out.display("x");
+    }
 }

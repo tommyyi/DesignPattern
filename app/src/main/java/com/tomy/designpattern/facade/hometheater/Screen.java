@@ -1,34 +1,35 @@
 package com.tomy.designpattern.facade.hometheater;
 
-public class Screen {
+class Screen
+{
 
 
+    private static Screen instance = null;
 
-	private static Screen instance = null;
+    private Screen()
+    {
 
-	private Screen() {
+    }
 
-	}
+    public static Screen getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new Screen();
+        }
 
-	public static Screen getInstance() {
-		if (instance == null) {
-			instance = new Screen();
-		}
+        return instance;
+    }
 
-		return instance;
-	}
-	
-	public void up() {
-		System.out.println("Screen  up");
-	}
+    public void up()
+    {
+        System.out.println("Screen  up");
+    }
 
-	public void down() {
-		System.out.println("Screen  down");
-	}
+    public void down()
+    {
+        System.out.println("Screen  down");
+    }
 
-	
-	
-	
-	
 
 }

@@ -1,21 +1,21 @@
 package com.tomy.designpattern.mediator;
 
-public class Alarm extends Colleague {
+public class Alarm extends Colleague
+{
+    public Alarm(IMediator iMediator, String name)
+    {
+        super(iMediator, name);
+        iMediator.Register(name, this);
+    }
 
-	public Alarm(IMediator IMediator, String name) {
-		super(IMediator, name);
-		// TODO Auto-generated constructor stub
-		IMediator.Register(name, this);
-	}
+    public void SendAlarm(int colleagueState)
+    {
+        SendMessage(colleagueState);
+    }
 
-	public void SendAlarm(int stateChange) {
-		SendMessage(stateChange);
-	}
-
-	@Override
-	public void SendMessage(int stateChange) {
-		// TODO Auto-generated method stub
-		this.GetMediator().GetMessage(stateChange, this.name);
-	}
-
+    @Override
+    public void SendMessage(int colleagueState)
+    {
+        this.GetMediator().sendMessage(this.name, colleagueState);
+    }
 }

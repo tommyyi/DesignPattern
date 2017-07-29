@@ -2,28 +2,28 @@ package com.tomy.designpattern.flyweight.fly;
 
 import java.util.HashMap;
 
-public class PlantFactory {
+public class PlantFactory
+{
+    /*仅仅需要存储少数几类对象*/
+    private HashMap<Integer, Plant> plantMap = new HashMap<>();
+    public PlantFactory()
+    {
+    }
 
-	private HashMap<Integer, Plant> plantMap = new HashMap<Integer, Plant>();
-
-	public PlantFactory() {
-
-	}
-
-	public Plant getPlant(int type) {
-
-		if (!plantMap.containsKey(type)) {
-
-			switch (type) {
-			case 0:
-				plantMap.put(0, new Tree());
-				break;
-			case 1:
-				plantMap.put(1, new Grass());
-				break;
-			}
-		}
-
-		return plantMap.get(type);
-	}
+    public Plant getPlant(int type)
+    {
+        if (!plantMap.containsKey(type))
+        {
+            switch (type)
+            {
+                case 0:
+                    plantMap.put(0, new Tree());
+                    break;
+                case 1:
+                    plantMap.put(1, new Grass());
+                    break;
+            }
+        }
+        return plantMap.get(type);
+    }
 }

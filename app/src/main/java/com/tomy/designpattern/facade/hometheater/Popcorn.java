@@ -1,34 +1,40 @@
 package com.tomy.designpattern.facade.hometheater;
 
-public class Popcorn {
+class Popcorn
+{
 
 
-	private static Popcorn instance = null;
+    private static Popcorn instance = null;
 
-	private Popcorn() {
+    private Popcorn()
+    {
 
-	}
+    }
 
-	public static Popcorn getInstance() {
-		if (instance == null) {
-			instance = new Popcorn();
-		}
+    public static Popcorn getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new Popcorn();
+        }
 
-		return instance;
-	}
-	
-	public void on() {
-		System.out.println("Popcorn On");
-	}
+        return instance;
+    }
 
-	public void off() {
-		System.out.println("Popcorn Off");
-	}
+    public void on()
+    {
+        System.out.println("Popcorn On");
+    }
 
-	public void pop() {
-		System.out.println("Popcorn is popping");
-	}
-	
-	
-	
+    public void off()
+    {
+        System.out.println("Popcorn Off");
+    }
+
+    public void pop()
+    {
+        System.out.println("Popcorn is popping");
+    }
+
+
 }
