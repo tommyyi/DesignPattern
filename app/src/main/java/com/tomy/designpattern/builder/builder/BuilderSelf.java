@@ -2,59 +2,47 @@ package com.tomy.designpattern.builder.builder;
 
 
 import com.tomy.designpattern.builder.vacation.Vacation;
+import com.tomy.designpattern.builder.vacation.VacationDay;
 
 public class BuilderSelf
 {
     public Vacation mVacation;
 
-    public BuilderSelf(String std)
+    public BuilderSelf(String startDay)
     {
-        mVacation = new Vacation(std);
-        // TODO Auto-generated constructor stub
-
+        mVacation = new Vacation(startDay);
     }
 
-    public BuilderSelf addDay()
+    public VacationDay addDay()
     {
-        // TODO Auto-generated method stub
+        return mVacation.addVacationDay();
+    }
 
-        mVacation.addDay();
+    public VacationDay getVacationDay(int index)
+    {
+        return mVacation.getVacationDay(index);
+    }
+
+    public BuilderSelf addHotel(VacationDay vacationDay, String hotel)
+    {
+        mVacation.setHotel(vacationDay, hotel);
         return this;
     }
 
-    public BuilderSelf buildDay(int i)
+    public BuilderSelf addTicket(VacationDay vacationDay, String ticket)
     {
-        // TODO Auto-generated method stub
-
-        mVacation.setVacationDay(i);
+        mVacation.addTicket(vacationDay, ticket);
         return this;
     }
 
-    public BuilderSelf addHotel(String hotel)
+    public BuilderSelf addEvent(VacationDay vacationDay, String event)
     {
-        // TODO Auto-generated method stub
-        mVacation.setHotel(hotel);
-        return this;
-    }
-
-    public BuilderSelf addTicket(String ticket)
-    {
-        // TODO Auto-generated method stub
-        mVacation.addTicket(ticket);
-        return this;
-    }
-
-    public BuilderSelf addEvent(String event)
-    {
-        // TODO Auto-generated method stub
-        mVacation.addEvent(event);
+        mVacation.addEvent(vacationDay, event);
         return this;
     }
 
     public Vacation getVacation()
     {
-
         return mVacation;
-
     }
 }

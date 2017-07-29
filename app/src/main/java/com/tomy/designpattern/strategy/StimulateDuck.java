@@ -24,9 +24,9 @@ public class StimulateDuck {
 		mRedHeadDuck.Quack();
 		mRedHeadDuck.swim();
 		mRedHeadDuck.display();
-		mRedHeadDuck.SetFlyBehavoir(new NoFlyBehavior());
+		mRedHeadDuck.SetFlyBehavior(new NoFlyBehavior());
 		mRedHeadDuck.Fly();
-		mRedHeadDuck.SetQuackBehavoir(new NoQuackBehavior());
+		mRedHeadDuck.SetQuackBehavior(new NoQuackBehavior());
 		mRedHeadDuck.Quack();
 	}
 

@@ -1,69 +1,37 @@
 package com.tomy.designpattern.builder.builder;
 
 
+import com.tomy.designpattern.builder.vacation.VacationDay;
+
 public class Builder4d extends AbsBuilder
 {
-
     public Builder4d(String std)
     {
         super(std);
-        // TODO Auto-generated constructor stub
-
     }
 
     @Override
-    public void buildDay(int i)
+    public void buildVacation()
     {
-        // TODO Auto-generated method stub
+        VacationDay vacationDay = addVacationDay();
+        addTicket(vacationDay, "Plane Ticket");
+        addEvent(vacationDay, "Fly to Destination");
+        addEvent(vacationDay, "Supper");
+        addHotel(vacationDay, "Hilton");
 
-        mVacation.setVacationDay(i);
+        vacationDay = addVacationDay();
+        addTicket(vacationDay, "Zoo Ticket");
+        addEvent(vacationDay, "Bus to Zoo");
+        addEvent(vacationDay, "Feed animals");
+        addHotel(vacationDay, "Hilton");
 
+        vacationDay = addVacationDay();
+        addTicket(vacationDay, "Beach");
+        addEvent(vacationDay, "Swimming");
+        addHotel(vacationDay, "Home inn");
+
+        vacationDay = addVacationDay();
+        addTicket(vacationDay, "Plane Ticket");
+        addEvent(vacationDay, "Fly to Home");
     }
-
-    @Override
-    public void addHotel(String hotel)
-    {
-        // TODO Auto-generated method stub
-        mVacation.setHotel(hotel);
-    }
-
-    @Override
-    public void addTicket(String ticket)
-    {
-        // TODO Auto-generated method stub
-        mVacation.addTicket(ticket);
-    }
-
-    @Override
-    public void addEvent(String event)
-    {
-        // TODO Auto-generated method stub
-        mVacation.addEvent(event);
-    }
-
-    @Override
-    public void buildvacation()
-    {
-        // TODO Auto-generated method stub
-        addTicket("Plane Ticket");
-        addEvent("Fly to Destination");
-        addEvent("Supper");
-        addHotel("Hilton");
-
-        mVacation.addDay();
-        addTicket("Zoo Ticket");
-        addEvent("Bus to Zoo");
-        addEvent("Feed animals");
-        addHotel("Hilton");
-
-        mVacation.addDay();
-        addTicket("Beach");
-        addEvent("Swimming");
-        addHotel("Home inn");
-
-        mVacation.addDay();
-        addTicket("Plane Ticket");
-        addEvent("Fly to Home");
-    }
-
 }

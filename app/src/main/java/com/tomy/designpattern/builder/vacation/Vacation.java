@@ -9,82 +9,71 @@ import java.util.Date;
 public class Vacation
 {
     private ArrayList<VacationDay> mVacationDayLst;
-    private Date mStDate;
-    private int mDays = 0;
-    private VacationDay mVacationDay;
+    private Date mStartDate;
 
-    public Vacation(String std)
+    public Vacation(String startDay)
     {
-        mVacationDayLst = new ArrayList<VacationDay>();
+        mVacationDayLst = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try
         {
-            mStDate = sdf.parse(std);
-            mVacationDay = new VacationDay(mStDate);
-            mVacationDayLst.add(mVacationDay);
-            mDays++;
+            mStartDate = sdf.parse(startDay);
+            VacationDay vacationDay = new VacationDay(mStartDate);
+            mVacationDayLst.add(vacationDay);
         }
         catch (ParseException e)
         {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
 
-    public Date getStDate()
+    public Date getStartDate()
     {
-
-        return mStDate;
+        return mStartDate;
     }
 
-    public void setStDate(String std)
+    public void setStartDate(String std)
     {
-
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try
         {
-            mStDate = sdf.parse(std);
+            mStartDate = sdf.parse(std);
         }
         catch (ParseException e)
         {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
     }
 
-    public void addDay()
+    public VacationDay addVacationDay()
     {
-
-        mVacationDay = new VacationDay(nextDate(mDays));
-        mVacationDayLst.add(mVacationDay);
-        mDays++;
+        VacationDay vacationDay = new VacationDay(nextDate());
+        mVacationDayLst.add(vacationDay);
+        return vacationDay;
     }
 
-    public boolean setVacationDay(int i)
+    public VacationDay getVacationDay(int i)
     {
         if ((i > 0) && (i < mVacationDayLst.size()))
         {
-            mVacationDay = mVacationDayLst.get(i);
-            return true;
+            return mVacationDayLst.get(i);
         }
-        mVacationDay = null;
-        return false;
+        return null;
     }
 
-    public void setHotel(String mHotels)
+    public void setHotel(VacationDay vacationDay, String mHotels)
     {
-        mVacationDay.setHotel(mHotels);
+        vacationDay.setHotel(mHotels);
     }
 
-    public void addTicket(String ticket)
+    public void addTicket(VacationDay vacationDay, String ticket)
     {
-        mVacationDay.addTicket(ticket);
+        vacationDay.addTicket(ticket);
     }
 
-    public void addEvent(String event)
+    public void addEvent(VacationDay vacationDay, String event)
     {
-        mVacationDay.addEvent(event);
+        vacationDay.addEvent(event);
     }
 
     public void showInfo()
@@ -93,15 +82,18 @@ public class Vacation
         {
             System.out.println("** " + (i + 1) + " day**");
             System.out.println(mVacationDayLst.get(i).showInfo());
-
         }
     }
 
-    private Date nextDate(int n)
+    /**
+     * @return 假设第一天是5号，假设已经有3天的安排：5、6、7
+     * 那么新增的1天，就是5+3=8，就是新增8号的安排
+     */
+    private Date nextDate()
     {
         Calendar cal = Calendar.getInstance();
-        cal.setTime(mStDate);
-        cal.add(Calendar.DATE, n);
+        cal.setTime(mStartDate);
+        cal.add(Calendar.DATE, mVacationDayLst.size());
         return cal.getTime();
     }
 }

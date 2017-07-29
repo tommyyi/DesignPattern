@@ -4,19 +4,20 @@ package com.tomy.designpattern.builder;
 import com.tomy.designpattern.builder.builder.Builder3d;
 import com.tomy.designpattern.builder.builder.Builder4d;
 import com.tomy.designpattern.builder.builder.BuilderSelf;
+import com.tomy.designpattern.builder.vacation.VacationDay;
 
 public class MainTest
 {
-
     public static void main(String[] args)
     {
-
-        Director mDirector = new Director(new Builder4d("2015-12-29"));
-
+        String startDay = "2015-12-29";
+        Director mDirector = new Director(new Builder4d(startDay));
         mDirector.construct();
 
-        mDirector.setBuilder(new Builder3d("2015-8-30"));
+        startDay = "2015-8-30";
+        mDirector.setBuilder(new Builder3d(startDay));
         mDirector.construct();
+
         testself();
     }
 
@@ -24,17 +25,20 @@ public class MainTest
     {
         BuilderSelf builder = new BuilderSelf("2015-9-29");
 
-        builder.addTicket("Plane Ticket").addEvent("Fly to Destination").addEvent("Supper").addHotel("Hilton");
+        VacationDay vacationDay = builder.addDay();
+        builder.addTicket(vacationDay, "Plane Ticket").addEvent(vacationDay, "Fly to Destination").addEvent(vacationDay, "Supper").addHotel(vacationDay, "Hilton");
 
-        builder.addDay().addTicket("Zoo Ticket").addEvent("Bus to Zoo").addEvent("Feed animals").addHotel("Home Inn");
+        vacationDay = builder.addDay();
+        builder.addTicket(vacationDay, "Zoo Ticket").addEvent(vacationDay, "Bus to Zoo").addEvent(vacationDay, "Feed animals").addHotel(vacationDay, "Home Inn");
 
-        builder.addDay();
-        builder.addTicket("Beach");
-        builder.addEvent("Swimming");
-        builder.addHotel("Home inn");
+        vacationDay = builder.addDay();
+        builder.addTicket(vacationDay, "Beach");
+        builder.addEvent(vacationDay, "Swimming");
+        builder.addHotel(vacationDay, "Home inn");
 
-        builder.addDay().addTicket("Plane Ticket").addEvent("Fly to Home");
+        vacationDay = builder.addDay();
+        builder.addTicket(vacationDay, "Plane Ticket").addEvent(vacationDay, "Fly to Home");
+
         builder.getVacation().showInfo();
     }
-
 }

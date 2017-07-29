@@ -6,9 +6,9 @@ import java.util.Date;
 public class VacationDay
 {
     private Date mDate;
-    private String mHotels;
     private ArrayList<String> mTickets = null;
     private ArrayList<String> mEvents = null;
+    private String mHotels;
 
     public VacationDay(Date date)
     {

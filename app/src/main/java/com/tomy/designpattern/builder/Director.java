@@ -19,7 +19,7 @@ public class Director
 
     public void construct()
     {
-        builder.buildvacation();
+        builder.buildVacation();
         builder.getVacation().showInfo();
     }
 }
